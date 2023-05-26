@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Find Your Pokemon</string>
+    <string name="pokemon_image">Pokemon image</string>
+    <string name="back_to_prev_screen">Back to previous screen</string>
+    <string name="no_data_found">No data found\n</string>
+    <string name="catch_the_pokemon">Catch The Pokemon</string>
+    <string name="owned">Owned\n</string>
+    <string name="save">Save</string>
+    <string name="pokemon_escaped">Pokemon escaped</string>
+    <string name="owned_pokemon">Your Owned Pokemon</string>
+    <string name="release">Release</string>
+</resources>
