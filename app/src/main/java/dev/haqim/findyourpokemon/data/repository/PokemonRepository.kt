@@ -14,6 +14,7 @@ import dev.haqim.findyourpokemon.data.remote.RemoteDataSource
 import dev.haqim.findyourpokemon.data.remote.response.pokemondetail.PokemonDetailResponse
 import dev.haqim.findyourpokemon.data.remote.response.pokemondetail.toPokemonMovesEntity
 import dev.haqim.findyourpokemon.data.remote.response.pokemondetail.toPokemonTypesEntity
+import dev.haqim.findyourpokemon.data.remotemediator.PokemonOwnedPagingSource
 import dev.haqim.findyourpokemon.data.remotemediator.PokemonRemoteMediator
 import dev.haqim.findyourpokemon.data.remotemediator.PokemonRemoteMediator.Companion.POKEMON_PAGE_SIZE
 import dev.haqim.findyourpokemon.di.DispatcherIO
@@ -53,21 +54,15 @@ class PokemonRepository @Inject constructor(
         }
     }
 
-    @OptIn(ExperimentalPagingApi::class)
     override fun getOwnedPokemonList(): Flow<PagingData<Pokemon>> {
         return Pager(
             config = PagingConfig(
                 pageSize = POKEMON_PAGE_SIZE
             ),
-            remoteMediator = remoteMediator,
             pagingSourceFactory = {
-                localDataSource.getAllOwnedPokemons()
+                PokemonOwnedPagingSource(localDataSource)
             }
-        ).flow.flowOn(dispatcher).map { pagingData ->
-            pagingData.map {
-                it.toModel()
-            }
-        }
+        ).flow
     }
 
     override fun getPokemon(id: String): Flow<Resource<Pokemon?>> {

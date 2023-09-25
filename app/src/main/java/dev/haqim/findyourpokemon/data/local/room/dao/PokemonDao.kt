@@ -3,6 +3,7 @@ package dev.haqim.findyourpokemon.data.local.room.dao
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Upsert
@@ -20,10 +21,10 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface PokemonDao {
     
-    @Upsert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsertPokemons(pokemons: List<PokemonEntity>)
-    
-    @Upsert
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsertPokemonOwned(pokemonOwned: PokemonOwnedEntity)
 
     @Query("DELETE FROM $POKEMON_OWNED_TABLE WHERE pokemon_id = :pokemonId")
@@ -34,8 +35,8 @@ interface PokemonDao {
     fun getAllPokemons(): PagingSource<Int, PokemonDetailEntity>
 
     @Transaction
-    @Query("SELECT * FROM $POKEMON_TABLE WHERE id IN (SELECT pokemon_id FROM $POKEMON_OWNED_TABLE)")
-    fun getAllOwnedPokemons(): PagingSource<Int, PokemonDetailEntity>
+    @Query("SELECT * FROM $POKEMON_TABLE WHERE id IN (SELECT pokemon_id FROM $POKEMON_OWNED_TABLE) LIMIT :limit OFFSET :offset")
+    suspend fun getAllOwnedPokemons(limit: Int, offset: Int): List<PokemonDetailEntity>
 
     @Transaction
     @Query("SELECT * FROM $POKEMON_TABLE where id = :id")

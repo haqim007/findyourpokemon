@@ -26,7 +26,7 @@ class LocalDataSource @Inject constructor (private val database: PokemonDatabase
     suspend fun upsertPokemonOwned(pokemon: PokemonOwnedEntity) = pokemonDao.upsertPokemonOwned(pokemon)
     suspend fun removePokemonOwned(pokemonId: String) = pokemonDao.removePokemonOwned(pokemonId)
     fun getAllPokemons() = pokemonDao.getAllPokemons()
-    fun getAllOwnedPokemons() = pokemonDao.getAllOwnedPokemons()
+    suspend fun getAllOwnedPokemons(limit: Int, offset: Int) = pokemonDao.getAllOwnedPokemons(limit, offset)
     fun getPokemonById(id: String) = pokemonDao.getPokemonById(id)
     private suspend fun clearAllPokemons() = pokemonDao.clearAllPokemons()
 

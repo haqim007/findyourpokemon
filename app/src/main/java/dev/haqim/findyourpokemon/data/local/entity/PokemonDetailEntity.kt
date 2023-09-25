@@ -12,7 +12,7 @@ data class PokemonDetailEntity(
         parentColumn = "id",
         entityColumn = "pokemon_id"
     )
-    val pokemonOwned: PokemonOwnedEntity?,
+    val pokemonOwned: PokemonOwnedEntity? = null,
     
     @Relation(
         parentColumn = "id",
@@ -38,3 +38,5 @@ fun PokemonDetailEntity.toModel() = Pokemon(
     type = this.pokemonTypes.map { it.typeName },
     move = this.pokemonMoves.map { it.moveName },
 )
+
+fun List<PokemonDetailEntity>.toModel() = this.map { it.toModel() }

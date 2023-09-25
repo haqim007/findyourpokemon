@@ -12,8 +12,7 @@ const val POKEMON_OWNED_TABLE = "pokemon_owned"
         ForeignKey(
             entity = PokemonEntity::class,
             parentColumns = ["id"],
-            childColumns = ["pokemon_id"],
-            onDelete = ForeignKey.NO_ACTION
+            childColumns = ["pokemon_id"]
         )
     ]
 )
@@ -22,5 +21,6 @@ data class PokemonOwnedEntity(
     val id: Int = 0,
     @ColumnInfo(name = "pokemon_id") 
     val pokemonId: String,
-    @ColumnInfo(name = "nickname") val nickname: String? = null
+    @ColumnInfo(name = "nickname") 
+    val nickname: String? = null
 )

@@ -12,7 +12,7 @@ import dev.haqim.findyourpokemon.data.local.room.dao.RemoteKeysDao
 
 
 @Database(
-    version = 5,
+    version = 7,
     entities = [
         RemoteKeys::class,
         PokemonEntity::class,

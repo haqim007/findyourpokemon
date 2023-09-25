@@ -74,7 +74,6 @@ fun PokemonApp(
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
-    val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val rotation = remember { Animatable(0f) }
 
@@ -86,11 +85,14 @@ fun PokemonApp(
                         containerColor = MaterialTheme.colorScheme.primary
                     ),
                     title = { 
-                        if(currentRoute == Screen.PokemonList.route){
-                            Text(text = stringResource(id = R.string.app_name))
+                        val title = if(currentRoute == Screen.PokemonList.route){
+                            stringResource(id = R.string.app_name)
                         }else{
-                            Text(text = stringResource(id = R.string.owned_pokemon))
+                            stringResource(id = R.string.owned_pokemon)
                         }
+                        Text(
+                            text = title
+                        )
                     },
                     actions = {
                         if(currentRoute == Screen.PokemonList.route){

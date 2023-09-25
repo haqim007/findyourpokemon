@@ -109,8 +109,8 @@ fun DetailPokemonScreen(
                     )
                 }
             }
-            is Resource.Success ->{
-                pokemon.data?.let {data ->
+            is Resource.Success -> {
+                pokemon.data?.let { data ->
                     DetailPokemonContent(
                         pokemon = data, 
                         catchingResult = catchingResult,

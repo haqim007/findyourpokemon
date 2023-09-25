@@ -204,7 +204,7 @@ fun PokemonBadges(
             modifier = Modifier.padding(bottom = 8.dp)
         )
             LazyVerticalGrid(
-                columns = GridCells.Fixed(3)
+                columns = GridCells.Fixed(2)
             ) {
                 items(data) {
                     PokemonBadgesContent(it)

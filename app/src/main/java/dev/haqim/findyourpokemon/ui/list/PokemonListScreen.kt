@@ -1,6 +1,5 @@
 package dev.haqim.findyourpokemon.ui.list
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -43,11 +42,7 @@ fun PokemonListScreen(
             }
         }
     }
-
-
-    LaunchedEffect(pagingDataFlow){
-        Log.d("PokemonLogLaunchedEffect", "collected: ${pagingDataFlow}")
-    }
+    
     PokemonListContent(
         pagingData = pagingDataFlow, 
         modifier = modifier
