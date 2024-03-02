@@ -49,6 +49,8 @@ fun DetailPokemonScreen(
                 is DetailPokemonUiEffect.NavigateBack -> {
                     navigateBack()
                 }
+
+                else -> {}
             }
         }
     }

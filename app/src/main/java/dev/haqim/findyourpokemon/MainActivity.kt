@@ -1,7 +1,6 @@
 package dev.haqim.findyourpokemon
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.core.Animatable
@@ -28,7 +27,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -40,7 +38,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import dagger.hilt.android.AndroidEntryPoint
-import dev.haqim.catapp.ui.screen.navigation.Screen
+import dev.haqim.findyourpokemon.ui.navigation.Screen
 import dev.haqim.findyourpokemon.ui.component.PlainMessage
 import dev.haqim.findyourpokemon.ui.detail.DetailPokemonScreen
 import dev.haqim.findyourpokemon.ui.list.PokemonListScreen
@@ -146,6 +144,7 @@ fun PokemonApp(
             startDestination = Screen.PokemonList.route,
             modifier = modifier.padding(innerPadding)
         ) {
+            
             composable(Screen.PokemonList.route) {
                 PokemonListScreen(
                     navController = navController

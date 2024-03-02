@@ -242,7 +242,7 @@ fun DetailPokemonScreenPreview() {
         DetailPokemonContent(
             pokemon = dummyPokemons[2],
             onCatchPokemon = {},
-            catchingResult = Resource.Idle(),
+            catchingResult = Resource.Success(CatchPokemonStatus.FAILED),
             onAddPokemonNickname = {},
             onResetCatchingResult = {},
             onReleasePokemon = {}

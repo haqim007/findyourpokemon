@@ -1,4 +1,4 @@
-package dev.haqim.catapp.ui.screen.navigation
+package dev.haqim.findyourpokemon.ui.navigation
 
 sealed class Screen(val route: String) {
     object PokemonList : Screen("pokemonList")
